@@ -1,0 +1,169 @@
+CLIENT ID	    bd82fd48c5074515904fc94d79de6dc7
+Client Secret   580b1d3e5d324db1bdd197f8ae34f407 
+SUPPORT EMAIL	ninadiasx@outlook.com
+CLIENT STATUS	Sandbox Mode
+ACCESS TOKEN    302766420.bd82fd4.dfc0e0141bcf4d3daebcc00a724b1b53
+
+https://thisisjs-ninseok.c9users.io/instagrami/index.html?code=d98fb5dd6c0b4ed79fb1808324d41665
+
+{"access_token": "302766420.bd82fd4.dfc0e0141bcf4d3daebcc00a724b1b53",
+    "user": {"id": "302766420",
+            "username": "ninseoker",
+            "profile_picture": "https://scontent.cdninstagram.com/vp/434c53711b5231f24bfa95c37023b1d7/5B8A7F95/t51.2885-19/s150x150/13534089_1047542882004073_1360056498_a.jpg",
+            "full_name": "\ub2c8\ub098\u2661",
+            "bio": "i wanna be high all the time would you come with me?",
+            "website": "",
+            "is_business": false}
+}
+
+
+
+DAY 
+CLIENT ID       65e4fe9c87dc4beda6353025cfb7d4e4
+CLIENT SECRET   73bfe49472104609ae856f46fb1b5836
+CODE            47c74a12b277408f907230497cedf864
+TOKEN           346107797.65e4fe9.bb914a0ae6734887968aeb0ecee97cea
+USER ID 346107797
+
+ALLAN
+CLIENT ID       e414fc9340684d9a9155d29c414a6a35
+CLIENT SECRET   f5cfdebe172c408ebdbbbd76826cc663 
+CODE            23b57aa6d4c344ff9d8eec12203af691
+TOKEN           7694992758.e414fc9.f2009bcc60a047158bb22e99c890c676
+USER ID         7694992758
+
+BLANTZMOB
+CLIENT ID       c317d5f85a0942919e0a1ee36de93165
+CLIENT SECRET   7500df44bb1f4781817dfc60a9bbf175
+CODE            ec60b9bfaf8b4438b639d28e77d44984
+TOKEN           7180460989.c317d5f.0ffcc9e9b9a64a60b48b78a1161a9730
+USER ID         7180460989
+
+RENATO
+CLIENT ID       1e2002fe30d54b62a2fae4e20d6ada97
+CLIENT SECRET   51cc27387cfa457b89eb279a01f0eaf5
+CODE            75a0536bd7ad4cd79ab4b3eadf0c3aa7
+TOKEN           260029426.1e2002f.b922a678e6bf43fe81ee12439173d6c7
+USER ID         260029426
+
+
+//curl -F 'client_id=CLIENT_ID' \
+//    -F 'client_secret=CLIENT_SECRET' \
+//    -F 'grant_type=authorization_code' \
+//    -F 'redirect_uri=AUTHORIZATION_REDIRECT_URI' \
+//    -F 'code=CODE' \
+//    https://api.instagram.com/oauth/access_token
+
+https://api.instagram.com/oauth/authorize/?client_id=bd82fd48c5074515904fc94d79de6dc7&redirect_uri=https://thisisjs-ninseok.c9users.io/instagrami/index.html&response_type=code&scope=likes+comments+public_content
+
+curl -F 'client_id=1e2002fe30d54b62a2fae4e20d6ada97' \
+-F 'client_secret=51cc27387cfa457b89eb279a01f0eaf5' \
+-F 'grant_type=authorization_code' \
+-F 'redirect_uri=https://thisisjs-ninseok.c9users.io/instagrami/index.html' \
+-F 'code=75a0536bd7ad4cd79ab4b3eadf0c3aa7' \
+https://api.instagram.com/oauth/access_token
+
+
+https://api.instagram.com/v1/users/self/media/recent/?access_token=ACCESS-TOKEN
+
+
+|------------------------------------------------------------------------------|
+
+Página que vai solicitar o token
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function start(){
+            window.location.href = "https://api.instagram.com/oauth/authorize/?client_id=___________&redirect_uri=__________&response_type=code"
+        }
+    </script>
+</head>
+<body>
+    <button onClick="start()"> Gerar Token </button>
+</body>
+</html>
+```
+
+Página que vai exibir o token
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        function pegarCodigo(){
+            var url = new URL(window.location.href); // url atual da página
+            var c = url.searchParams.get("code");
+            var div = document.getElementById("codigo");
+            div.innerHTML = c;
+        }
+        
+        window.onload = pegarCodigo;
+    </script>
+</head>
+<body>
+    <div id="codigo"></div>
+</body>
+</html>
+```
+
+function sendReq() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("h1").innerHTML =
+        this.responseText;
+      }
+    };
+  
+  xhttp.open("GET", "https://api.instagram.com/v1/users/self/?access_token=__________", true);
+  xhttp.send();
+}
+
+function teste(){
+    sendReq();
+}
+
+ver o json q ele retorna
+
+
+function sendReq() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var objInsta = JSON.parse(this.responseText); // faz o parse de texto pra json
+        montaPagina(objInsta); // passa o obj pra função
+      }
+    };
+  
+  xhttp.open("GET", "https://api.instagram.com/v1/users/self/?access_token=5470740110.199d6d2.1628ff56e66b47e48a8785790ebe6b70", true);
+  xhttp.send();
+}
+
+function montaPagina(objInsta){
+    var div = document.createElement("div");
+    var divId = document.createElement("div");
+    var imgPhoto = document.createElement("img");
+    var divUser = document.createElement("div");
+    var divFB = document.createElement("div");
+    divId.innerHTML = objInsta.data.id;
+    imgPhoto.src = objInsta.data.profile_picture;
+    divUser.innerHTML = objInsta.data.username;
+    divFB.innerHTML = objInsta.data.counts.followed_by;
+    div.appendChild(divId);
+    div.appendChild(imgPhoto);
+    div.appendChild(divUser);
+    div.appendChild(divFB);
+    document.body.appendChild(div);
+}
+
+function teste(){
+    sendReq();
+}

@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css?family=Poiret+One|Quicksand:400,700');
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: rgb(240,240,240);
+    width: 100%;
+}
+
+footer {
+    font-family: 'Poiret One', cursive;
+    background-color: rgb(64,64,64);
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 700;
+}
+
+main {
+    margin: 0 auto;
+    width: 70%;
+    padding: 0;
+}
+
+.principal {
+    border-top: 1px dotted black;
+    margin-top: 5%;
+}
+
+.divicon {
+    display: block;
+}
+
+h2{
+    padding-top: 3%;
+    padding-left: 3%;
+}
+
+.icon{
+    display: inline-block;
+    padding-top: 2%;
+    margin-bottom: 5%;
+}
+
+p:first-child{
+    display: block;
+    padding: 2px;
+}
+
+p:last-child{
+    display:block;
+    padding-bottom: 3px;
+}
+
+.image{
+    width: 80%;
+    display: block;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 4px 5px lightgray;
+}
+
+.fas::first-letter{
+    vertical-align: baseline;
+    letter-spacing: 5px;
+    color: rgb(200,0,0);
+}
+
+.fas{
+    margin-left: 20%;
+    margin-top: 3%;
+}
